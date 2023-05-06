@@ -1,0 +1,24 @@
+.trend {
+    margin: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 356px;
+    padding-right: 356px;
+}
+
+.trend ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.trend img{
+    width: 191px;
+    height: 236px;
+    margin: 10px;
+    border-radius: 3%;
+}
+
+.trend h2{
+    margin-top: -40px;
+    margin-left: 60px;
+}

@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Logopadrao {
+    display: flex;
+    height: 55px;
+    margin-left: 10vh;
+    cursor: pointer;
+}
+
+.userpadrao {
+    display: flex;
+    margin-left: auto;
+}
+
+.buttonzinhopadrao {
+    cursor: pointer;
+    border: none;
+    display: block;
+    font-size: 15px;
+    color: #ffff;
+    text-transform: uppercase;
+    height: 50px;
+    background: #130A58;
+    border-radius: 4px;
+    transform: rotate(-0.1deg);
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
+.nav-stylepadrao a {
+    list-style: none;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: x-large;
+    color: white;
+    opacity: 1;
+
+}
+
+.nav-stylepadrao li {
+    margin: 40px 0px;
+    cursor: pointer;
+    list-style: none;
+    max-width: 150px;
+}
+
+.nav-stylepadrao .homeiconpadrao{
+    height: 35px;
+    margin: -10px;
+}
+
+.nav-stylepadrao .topiconpadrao {
+    height: 35px;
+    margin: -10px;
+}
+
+
+/* ---------------- Navbar and burger menu ------------------ */
+.padraozao {
+    width: 100%;
+    height: 5em;
+    background-color: #4C369E;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+    z-index: 2;
+    top: 0px;
+    position: fixed;
+}
+
+.burgerpadrao-menu {
+    height: 100%;
+    width: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.burgerpadrao-bar {
+    width: 4em;
+    height: 0.5em;
+    background-color: #FFFF;
+    border-radius: 0.5em;
+}
+
+.menupadrao {
+    width: 18%;
+    height: 50vh;
+    background-color: #4C369E;
+    position: fixed;
+    top: 70px;
+    border-radius: 10px;
+    z-index: 2;
+
+}
+
+
+/* ------------- sliding menu ------------------
+.teste {
+    display: flex;
+    flex-direction: column;
+}
+
+*/
+.hiddenpadrao {
+    display: none;
+}
+
+.visiblepadrao {
+    display: inherit;
+}
+
+/* ----- animations--------- */
+/* clicked */
+.burgerpadrao-bar.clickedpadrao:nth-child(1) {
+    transform: rotate(45deg) translate(0.75em, 1.25em);
+    transition: ease-out 0.5s;
+}
+
+.burgerpadrao-bar.clickedpadrao:nth-child(2) {
+    transform: scale(0.1);
+    transition: ease-out 0.5s;
+}
+
+.burgerpadrao-bar.clickedpadrao:nth-child(3) {
+    transform: rotate(135deg) translate(-0.5em, 1em);
+    transition: ease-out 0.5s;
+}
+
+/* unclicked */
+.burgerpadrao-bar.unclickedpadrao {
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+@media only screen and (max-width:950){
+    .menupadrao{
+        width: 22%;
+        height: 43vh;
+    }
+
+}
+
+@media only screen and (max-width:750px){
+    .menupadrao{
+        height: 43vh;
+        width: 27%;
+    }
+}
+
+@media only screen and (max-width:650px){
+    .menupadrao{
+        height: 43vh;
+        width: 33%;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .menupadrao{
+        height: 43vh;
+        width: 42%;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .menupadra{
+        height: 43vh;
+        width: 50%;
+    }
+}

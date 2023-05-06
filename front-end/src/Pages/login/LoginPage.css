@@ -1,0 +1,167 @@
+.Logoin {
+    display: flex;
+    height: 100px;
+    cursor: pointer;
+}
+
+.area-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 170vh;
+    justify-content: center;
+    align-items: center;
+}
+
+section.area-login {
+    position: absolute;
+    width: 700px;
+    height: 582px;
+    margin: 0% 27% 0%;
+    top: 201px;
+    background: #e2dce8;
+    opacity: 1.4;
+    box-shadow: 6px 6px 34px rgba(0, 0, 0, 0.25);
+    border-radius: 62px;
+}
+
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 456px;
+    height: 395px;
+    padding: 35px;
+}
+
+.login form {
+    display: flex;
+    width: 123%;
+    flex-direction: column;
+}
+
+.login input {
+    margin-top: 10px;
+    height: 45px;
+    width: 470px;
+}
+
+.ou {
+    position: absolute;
+    width: 333px;
+    height: 4px;
+    left: 367px;
+    top:365px;
+    background: #4C369E;
+}
+
+.twoou {
+    position: absolute;
+    width: 333px;
+    height: 4px;
+    left: -1px;
+    top:365px;
+    background: #4C369E;
+}
+
+input::placeholder {
+    color: #4C369E;
+}
+
+form [type="button"] {
+    display: block;
+    background-color: #4C369E;
+    font-size: 25px;
+    color: #d9d9d9;
+    text-transform: uppercase;
+    margin: 9px;
+    height: 50px;
+}
+
+.recuperar {
+    text-align: right;
+    background: none;
+    border: none;
+    color: #4C369E;
+}
+
+.outxt {
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+@media only screen and (max-width:1200px){
+
+    section.area-login{
+        margin: 0% 21% 0%;
+    }
+
+}
+
+
+@media only screen and (max-width:1000px){
+
+    section.area-login{
+        margin: 0% 15% 0%;
+    }
+
+}
+
+
+@media only screen and (max-width:900px){
+
+    section.area-login{
+        margin: 0% 23% 0%;
+        width: 450px;
+        height: 469px
+    }
+    
+    .login input{
+        height: 32px;
+        width: 379px;
+    }
+    
+    .ou {
+        width: 206px;
+        left: 244px;
+        top: 284px;
+    }
+    
+    .twoou {
+        width: 206px;
+        top: 284px;
+    }
+
+}
+
+@media only screen and (max-width:600px){
+
+    section.area-login{
+        margin: 0% 12% 0%;
+    }
+
+}
+
+@media only screen and (max-width:550px){
+
+    section.area-login{
+        margin: 0% 5% 0%;
+    }
+
+}
