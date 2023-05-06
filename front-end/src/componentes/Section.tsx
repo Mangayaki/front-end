@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./Section.css";
+//import {useHistory} from "react-router-history";
 
+const Age_rating = {
+  G: "Livre",
+  PG: "10 anos",
+  R: "14 anos",
+  R18: "18 anos",
+};
 
 function Section() {
+  const id = 0;
   const [mangaPopular, setMangaPopular] = useState([]);
-  const [mangaMelhores, setMangaMelhores] = useState([]);
-  const [mangaDoAno, setMangaDoAno] = useState([]);
+  const [mangarIDclick, setmangarIDClick] = useState(id);
+  const Kapi = `https://kitsu.io/api/edge`;
 
+  const navigate = useNavigate( );
   useEffect(() => {
-    fetch("https://kitsu.io/api/edge/manga?page[limit]=10&page[offset]=100}")
+    fetch(`${Kapi}/trending/manga`)
       .then((response) => response.json())
       .then((response) => setMangaPopular(response.data));
-    fetch("https://kitsu.io/api/edge/manga?page[limit]=10&page[offset]=200")
-      .then((response) => response.json())
-      .then((response) => setMangaMelhores(response.data));
-    fetch("https://kitsu.io/api/edge/manga?page[limit]=10&page[offset]=23")
-      .then((response) => response.json())
-      .then((response) => setMangaDoAno(response.data));
-  });
-  const navigate = useNavigate();
-  const goToViewG = () => {
-    navigate("/viewg");
-  }
-  const goToViewP = () => {
-    navigate("/viewp");
-  }
-  const goToViewS = () => {
-      navigate("/views");
+  }, []);
+
+  const handlePosterClick = ([]) => {
+    setmangarIDClick(id);
+    navigate(``)
+    console.log(`ID do mangá: ${id}`);
   };
 
   return (
@@ -40,59 +39,33 @@ function Section() {
                 ({
                   id,
                   attributes: {
+                    canonicalTitle,
                     posterImage: { original },
+                    ageRating, synopsis
                   },
                 }) => (
-                  <li>
-                      <img
-                        key={id}
-                        src={original ?? "imagem nao encontrada"}
-                        alt="manga" onClick={goToViewP}
-                      ></img>
+                  <li key={id}>
+                    <img
+                      src={original}
+                      alt={`Poster do Mangá com ID ${id}`}
+                      
+                    />
+                    <div>
+                      <h2 onClick={() => handlePosterClick(id)}>{canonicalTitle}</h2>
+                      <p> {synopsis} </p>
+                      {ageRating && (
+                        <h4>{`Classificação etária: ${
+                          Age_rating[ageRating] || ageRating
+                        }`}</h4>
+                      )}
+                    </div>
                   </li>
                 )
               )
-            : "Nenhuma manga encontrado"}
-          {mangaMelhores
-            ? mangaMelhores.map(
-                ({
-                  id,
-                  attributes: {
-                    posterImage: { original },
-                  },
-                }) => (
-                  <li>
-                      <img
-                        key={id}
-                        src={original ?? "imagem nao encontrada"}
-                        alt="manga" onClick={goToViewS}
-                      ></img>
-                  </li>
-                )
-              )
-            : "Nenhuma manga encontrado"}
-          {mangaDoAno
-            ? mangaDoAno.map(
-                ({
-                  id,
-                  attributes: {
-                    posterImage: { original },
-                  },
-                }) => (
-                  <li>
-                      <img
-                        key={id}
-                        src={original ?? "imagem nao encontrada"}
-                        alt="manga" onClick={goToViewG}
-                      ></img>
-                  </li>
-                )
-              )
-            : "Nenhuma manga encontrado"}
+            : "Carregando Mangá..."}
         </ul>
       </div>
     </div>
   );
 }
-
 export default Section;
