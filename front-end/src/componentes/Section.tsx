@@ -43,7 +43,7 @@ function Section() {
                         src={original}
                         alt={`Poster do Mangá com ID ${id}`}
                       />
-                      <div>
+                      <div className="descriptionSection">
                         <h2>{canonicalTitle}</h2>
                         {ageRating ? (
                           <h6>{`Classificação etária: ${

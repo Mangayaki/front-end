@@ -1,23 +1,53 @@
 .homeC {
     margin: 15%;
-
 }
 
+.popular {
+    width: 100%;
+}
 
-.popular ul{
+.popular h2 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.popular ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
+    justify-content: space-between;
 }
-.popular img{
+
+.popular li {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.popular img {
     width: 191px;
     height: 236px;
     margin: 10px;
     border-radius: 3%;
 }
 
-.popular h2{
-    margin-top: -40px;
-    margin-left: 0px;
+.descriptionSection {
+    display: flex;
+    flex-direction: column;
 }
 
+.descriptionSection h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.descriptionSection h6 {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    color: #888;
+}
