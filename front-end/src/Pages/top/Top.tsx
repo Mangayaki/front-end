@@ -4,23 +4,23 @@ import Footer from "../../componentes/Footer";
 import Header from "../../componentes/Header";
 //import Padrao from "../../componentes/Padrao";
 import './Topison.css';
+import Section from "../../componentes/Section";
 
+export const Age_rating = {
+  G: "Livre",
+  PG: "10 anos",
+  R: "14 anos",
+  R18: "18 anos",
+};
+export const Kapi = `https://kitsu.io/api/edge`;
 function Top() {
   const [mangaTrends, setMangaTrends] = useState([]);
-  const [mangaTrends2, setMangaTrends2] = useState([]);
-  const [mangaTrends3, setMangaTrends3] = useState([]);
 
   useEffect(() => {
-    fetch("https://kitsu.io/api/edge/trending/manga")
+    fetch(`${Kapi}/trending/manga`)
       .then((response) => response.json())
       .then((response) => setMangaTrends(response.data));
-    fetch("https://kitsu.io/api/edge/manga?page[limit]=20&page[offset]=23")
-      .then((response) => response.json())
-      .then((response) => setMangaTrends2(response.data));
-    fetch("https://kitsu.io/api/edge/manga?page[limit]=20&page[offset]=33")
-      .then((response) => response.json())
-      .then((response) => setMangaTrends3(response.data));
-  });
+  },[]);
   return (
     <div>
       <Header />
@@ -31,60 +31,32 @@ function Top() {
           {mangaTrends
             ? mangaTrends.map(
               ({
-                id, attributes: {
+                id,
+                attributes: {
+                  canonicalTitle,
                   posterImage: { original },
+                  ageRating, synopsis,
                 },
               }) => (
-                <li>
-                  <a href={"##"}>
-                    <img
-                      key={id}
-                      src={original ?? "imagem nao encontrada"}
-                      alt="manga"
-                    ></img>
-                  </a>
+                <li key={id}>
+                  <img
+                    src={original}
+                    alt={`Poster do Mangá com ID ${id}`}
+                    
+                  />
+                  <div>
+                    <h2 >{canonicalTitle}</h2>
+                    <p> {synopsis} </p>
+                    {ageRating && (
+                      <h6>{`Classificação etária: ${
+                        Age_rating[ageRating] || ageRating
+                      }`}</h6>
+                    )}
+                  </div>
                 </li>
               )
             )
-            : "Nenhuma manga encontrado"}
-          {mangaTrends2
-            ? mangaTrends2.map(
-              ({
-                id, attributes: {
-                  posterImage: { original },
-                },
-              }) => (
-                <li>
-                  <a href={"##"}>
-                    <img
-                      key={id}
-                      src={original ?? "imagem nao encontrada"}
-                      alt="manga"
-                    ></img>
-                  </a>
-                </li>
-              )
-            )
-            : "Nenhuma manga encontrado"}
-          {mangaTrends3
-            ? mangaTrends3.map(
-              ({
-                id, attributes: {
-                  posterImage: { original },
-                },
-              }) => (
-                <li>
-                  <a href={"##"}>
-                    <img
-                      key={id}
-                      src={original ?? "imagem nao encontrada"}
-                      alt="manga"
-                    ></img>
-                  </a>
-                </li>
-              )
-            )
-            : "Nenhuma manga encontrado"}
+          : "Carregando Mangá..."}
         </ul>
       </div>
       <Footer />
