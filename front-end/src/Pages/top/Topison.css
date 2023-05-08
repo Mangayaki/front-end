@@ -4,21 +4,51 @@
     margin-right: auto;
     padding-left: 356px;
     padding-right: 356px;
+    width: 100%;
 }
 
-.trend ul{
+.trend h2 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.trend ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
+    justify-content: space-between;
 }
-.trend img{
+
+.trend li {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.trend img {
     width: 191px;
     height: 236px;
     margin: 10px;
     border-radius: 3%;
 }
 
-.trend h2{
-    margin-top: -40px;
-    margin-left: 60px;
+.descriptionTop {
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptionTop h2 {
+    font-size: 18px;
+    margin: 0; 
+}
+
+.descriptionTop h6 {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    color: #888;
 }
