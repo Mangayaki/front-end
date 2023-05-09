@@ -13,13 +13,14 @@ function ViewP() {
   });
 
   // Função para criar lista de capítulos
-  function createChapterList(numChapters: number): string {
-    let chapterList = "";
+  function createChapterList(numChapters: number): JSX.Element[] {
+    const chapterList: JSX.Element[] = [];
     for (let i = 1; i <= numChapters; i++) {
-      chapterList += `Capítulo ${i}\n`;
+      chapterList.push(<li key={i}>Capítulo {i}</li>);
     }
     return chapterList;
   }
+  
 
   return (
     <div>
@@ -40,8 +41,7 @@ function ViewP() {
         </div>
         <div className="cap">
           <ul>
-           <li> {createChapterList(50)} {/* Chama a função para criar lista de capítulos com 10 itens */}
-           </li>
+           {createChapterList(50)} {/* Chama a função para criar lista de capítulos com 10 itens */}
           </ul>
         </div>
       </div>
