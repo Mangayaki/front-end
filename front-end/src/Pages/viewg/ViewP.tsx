@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
-
-
 import "./ViewG.css";
 
 function ViewP() {
@@ -13,6 +11,16 @@ function ViewP() {
       .then((response) => response.json())
       .then((response) => setMangaPrince(response.data));
   });
+
+  // Função para criar lista de capítulos
+  function createChapterList(numChapters: number): string {
+    let chapterList = "";
+    for (let i = 1; i <= numChapters; i++) {
+      chapterList += `Capítulo ${i}\n`;
+    }
+    return chapterList;
+  }
+
   return (
     <div>
       <Padrao />
@@ -27,24 +35,13 @@ function ViewP() {
             Its members are incredibly talented, gifted, and athletic. With rigorous and extremely intense practices, the upperclassmen of the team expect the very best from
             themselves and they expect even more from the new members of the team." </p>
         </div>
-        <div className="captitulo"> <h1> Capítulos</h1></div>
+        <div className="captitulo"> 
+          <h1> Capítulos</h1>
+        </div>
         <div className="cap">
           <ul>
-            <li>Capítulo 1 - Surge o Príncipe</li>
-            <li>Capítulo 2 - O Samurai Júnior</li>
-            <li>Capítulo 3 - Chegam os Veteranos</li>
-            <li>Capítulo 4 - Um Homem Chamado Serpente</li>
-            <li>Capítulo 5 - O Ataque da Serpente</li>
-            <li>Capítulo 6 - Nanjiro Echizen, o Homem</li>
-            <li>Capítulo 7 - Os Dois Ryomas</li>
-            <li>Capítulo 8 - Split Steps</li>
-            <li>Capítulo 9 - Um Dia Difícil</li>
-            <li>Capítulo 10 - O Retorno de Sasabi</li>
-            <li>Capítulo 11 - Ryoma Contra Momoshiro!</li>
-            <li>Capítulo 12 - A Tática da Finita</li>
-            <li>Capítulo 13 - Os Bons Também Jogam em Duplas!</li>
-            <li>Capítulo 14 - Tsubame Gaeshi, o Golpe Mortal!</li>
-            <li>Capítulo 15 - Kawamura, Quem é Você Realmente!</li>
+           <li> {createChapterList(50)} {/* Chama a função para criar lista de capítulos com 10 itens */}
+           </li>
           </ul>
         </div>
       </div>
@@ -52,4 +49,5 @@ function ViewP() {
     </div>
   );
 }
+
 export default ViewP;

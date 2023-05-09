@@ -15,21 +15,6 @@ import conficon from '../../componentes/imagens/conficon.png';
 import logouticon from '../../componentes/imagens/logouticon.png';
 
 
-
-
-//imagens sessão de sugestao e favoritos
-import manga1 from '../../componentes/imagens/capa/manga1.jpg';
-import manga2 from '../../componentes/imagens/capa/manga2.jpg';
-import manga3 from '../../componentes/imagens/capa/manga3.jpg';
-import manga4 from '../../componentes/imagens/capa/manga4.jpg';
-import manga5 from '../../componentes/imagens/capa/manga5.png';
-import manga6 from '../../componentes/imagens/capa/manga6.jpg';
-import manga7 from '../../componentes/imagens/capa/manga7.jpg';
-import manga8 from '../../componentes/imagens/capa/manga8.jpg';
-import manga9 from '../../componentes/imagens/capa/manga9.jpg';
-import manga10 from '../../componentes/imagens/capa/manga10.jpg';
-
-
 function UserPage() {
     const navigate = useNavigate();
     const goToHomePage = () => {
@@ -103,35 +88,6 @@ function UserPage() {
                     <li><img src={conficon} alt='configur icon' className="conficon"></img><a href="##">Configurações</a></li>
                     <li><img src={logouticon} alt='logout icon' className="logouticon"></img><a href="./login">Logout</a></li>
                 </ul>
-            </div>
-            <div className="homeU">
-                <div className='fav'>
-                    <h2>Favoritos</h2>
-                    <ul>
-                        <li><img src={manga1} alt='capa do manga'></img></li>
-                        <li><img src={manga2} alt='capa do manga'></img></li>
-                        <li><img src={manga3} alt='capa do manga'></img></li>
-                        <li><img src={manga4} alt='capa do manga'></img></li>
-                        <li><img src={manga5} alt='capa do manga'></img></li>
-                    </ul>
-                </div>
-                <div className='sugest'>
-                    <h2>Sugestões Para Você</h2>
-                    <ul>
-                        <li><img src={manga1} alt='capa do manga'></img></li>
-                        <li><img src={manga2} alt='capa do manga'></img></li>
-                        <li><img src={manga3} alt='capa do manga'></img></li>
-                        <li><img src={manga4} alt='capa do manga'></img></li>
-                        <li><img src={manga5} alt='capa do manga'></img></li>
-                    </ul>
-                    <ul>
-                        <li><img src={manga6} alt='capa do manga'></img></li>
-                        <li><img src={manga7} alt='capa do manga'></img></li>
-                        <li><img src={manga8} alt='capa do manga'></img></li>
-                        <li><img src={manga9} alt='capa do manga'></img></li>
-                        <li><img src={manga10} alt='capa do manga'></img></li>
-                    </ul>
-                </div>
             </div>
             <Section />
             <Footer />
