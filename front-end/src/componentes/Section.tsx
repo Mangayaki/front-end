@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-//import { Age_rating, Kapi } from '../../Pages/top/Top';
 import { useNavigate } from "react-router-dom";
 import "./Section.css";
 
@@ -17,7 +16,7 @@ function Section() {
 
   const navigate = useNavigate( );
   useEffect(() => {
-    fetch(`${Kapi}/manga?page[limit]=20&page[offset]=20`)
+    fetch(`${Kapi}/manga?page[limit]=20&page[offset]=22`)
       .then((response) => response.json())
       .then((response) => setMangaPopular(response.data));
   }, []);

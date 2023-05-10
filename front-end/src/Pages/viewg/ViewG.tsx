@@ -2,55 +2,86 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
+import { Age_rating } from "../top/Top";
+
+interface Manga {
+  attributes: {
+    canonicalTitle: string;
+    posterImage: {
+      original: string;
+    };
+    description: string;
+    startDate: string;
+    status: string;
+    ageRatingGuide: string;
+    chapterCount: number;
+  };
+}
+
+const mangaId = 14916;
+const Kapi = `https://kitsu.io/api/edge/manga`;
 
 function ViewG() {
-  const [,setMangaNaruto] = useState([]);
+  const [manga, setManga] = useState<Manga | null>(null);
 
   useEffect(() => {
-    fetch("https://kitsu.io/api/edge/manga/?page[limit]=1&page[offset]=34")
+    fetch(`${Kapi}?filter[id]=${mangaId}`)
       .then((response) => response.json())
-      .then((response) => setMangaNaruto(response.data));
-  });
+      .then((response) => setManga(response.data[0]));
+  }, []);
+
+  function createChapterList(numChapters: number): JSX.Element[] {
+    const chapterList: JSX.Element[] = [];
+    for (let i = 1; i <= numChapters; i++) {
+      chapterList.push(<li key={i}>Capítulo {i}</li>);
+    }
+    return chapterList;
+  }
+
+  if (!manga) {
+    return <p>Carregando ...</p>;
+  }
+
+  const {
+    canonicalTitle = "",
+    posterImage = { original: "" },
+    description = "",
+    startDate = "",
+    status = "",
+    ageRatingGuide = "",
+    chapterCount,
+  } = manga?.attributes || {};
+
+  const posterImageUrl = posterImage?.original || "";
+
   return (
     <div>
       <Padrao />
       <div className="mangaview">
         <div className="descrition">
-          <h1>Naruto</h1>
+          <h1>{canonicalTitle}</h1>
           <ul>
-            <li><h4>Tags:⠀⠀</h4></li>
-            <li>shounen</li>
-            <li id="invisible"></li>
-            <li>⠀comédia</li>
+            <li></li>
+            <li>{startDate}</li>
+            <li id="invisible">
+              <Age_rating /> {/* importa o componente Age_rating */}
+            </li>
+            <li>{ageRatingGuide}</li>
+            <li>{status}</li>
           </ul>
-          <img alt="capa do manga" src="https://media.kitsu.io/manga/poster_images/35/original.png"></img>
-          <p>Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. 
-            A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers.
-            Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village.</p>
+          <img src={posterImageUrl} alt="capa do manga" />
+          <p>{description}</p>
         </div>
-        <div className="captitulo"> <h1> Capítulos</h1></div>
+        <div className="captitulo">
+          <h1> Capítulos</h1>
+        </div>
         <div className="cap">
-          <ul>
-            <li>Capítulo 1 - Uzumaki Naruto!!</li>
-            <li>Capítulo 2 - Konohamaru!!</li>
-            <li>Capítulo 3 - Uchiha Sasuke!!</li>
-            <li>Capítulo 4 - Hatake Kakashi!!</li>
-            <li>Capítulo 5 - O Descuido é Seu Maior Inimigo!!</li>
-            <li>Capítulo 6 - Apenas o Sasuke-kun...!!</li>
-            <li>Capítulo 7 - A Conclusão do Kakashi</li>
-            <li>Capítulo 8 - Mesmo Assim Vocês Falharam!!</li>
-            <li>Capítulo 9 - O Pior Cliente Possível</li>
-            <li>Capítulo 10 - 2 Já Foram</li>
-            <li>Capítulo 11 - Desembarque!!</li>
-            <li>Capítulo 12 - Está Acabado!!</li>
-            <li>Capítulo 13 - Eu Sou um Ninja!!</li>
-            <li>Capítulo 14 - Plano Secreto...!!</li>
-            <li>Capítulo 15 - Sharinga Ressuscitado!!</li>
-          </ul>
+          <ul>{createChapterList(chapterCount)}</ul>
         </div>
       </div>
       <Footer />
     </div>
   );
 }
+
 export default ViewG;
