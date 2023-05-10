@@ -63,9 +63,7 @@ function ViewG() {
           <ul>
             <li></li>
             <li>{startDate}</li>
-            <li id="invisible">
-              <Age_rating /> {/* importa o componente Age_rating */}
-            </li>
+            <li id="invisible"></li>
             <li>{ageRatingGuide}</li>
             <li>{status}</li>
           </ul>

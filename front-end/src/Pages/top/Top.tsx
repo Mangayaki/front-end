@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Header from "../../componentes/Header";
 import './Topison.css';
+import { setMaxIdleHTTPParsers } from "http";
 
 interface Manga {
   id: number;
@@ -27,6 +28,13 @@ const Kapi = `https://kitsu.io/api/edge`;
 function Top() {
   const [mangaTrends, setMangaTrends] = useState<Manga[]>([]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [mangaId, setmangaId] = useState(null);
+
+
+  const handleTitleClick = () => {
+    const mangaClick = 'mangaId';
+    setmangaId(mangaClick);
+  }
 
   useEffect(() => {
     fetch(`${Kapi}/trending/manga`)
@@ -55,7 +63,7 @@ function Top() {
               <li key={id}>
                 <img src={attributes.posterImage.original} alt={`Poster do Mangá com ID ${id}`} />             
                 <div className="descriptionTop">
-                  <h2>{attributes.canonicalTitle}</h2>
+                  <h2 onClick={handleTitleClick}>{attributes.canonicalTitle}</h2>
                   <p>
                   {id === expandedId ? attributes.synopsis : `${attributes.synopsis.slice(0, 300)}...`}
                       <span onClick={() => toggleExpansion(id)}>
@@ -75,7 +83,6 @@ function Top() {
           )}
         </ul>
       </div>
-
       <Footer />
     </div>
   );
