@@ -2,38 +2,17 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Header from "../../componentes/Header";
 import './Topison.css';
-import { setMaxIdleHTTPParsers } from "http";
-
-interface Manga {
-  id: number;
-  attributes: {
-    canonicalTitle: string;
-    posterImage: {
-      original: string;
-    };
-    ageRating?: string;
-    synopsis: string;
-  };
-}
-
-export const Age_rating: Record<string, string> = {
-  G: "Livre",
-  PG: "10 anos",
-  R: "14 anos",
-  R18: "18 anos",
-};
-
-const Kapi = `https://kitsu.io/api/edge`;
+import {Kapi, Age_rating, Manga} from "../../componentes/Section";
 
 function Top() {
   const [mangaTrends, setMangaTrends] = useState<Manga[]>([]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
-  const [mangaId, setmangaId] = useState(null);
+  const [mangaId, setmangaId] = useState<number | null>(null);
 
 
-  const handleTitleClick = () => {
-    const mangaClick = 'mangaId';
-    setmangaId(mangaClick);
+  const handleTitleClick = (id: number) => {
+    setmangaId(id);
+    console.log(mangaId);
   }
 
   useEffect(() => {
@@ -43,13 +22,12 @@ function Top() {
   }, []);
 
   const toggleExpansion = (id: number) => {
-    if (id === expandedId){
+    if (id === expandedId) {
       setExpandedId(null);
-    } else{
+    } else {
       setExpandedId(id);
     }
   }
-
 
   return (
     <div>
@@ -61,25 +39,25 @@ function Top() {
           {mangaTrends.length > 0 ? (
             mangaTrends.map(({ id, attributes }) => (
               <li key={id}>
-                <img src={attributes.posterImage.original} alt={`Poster do Mangá com ID ${id}`} />             
+                <img src={attributes.posterImage.original} alt={`Poster do Mangá com ID ${id}`} />
                 <div className="descriptionTop">
-                  <h2 onClick={handleTitleClick}>{attributes.canonicalTitle}</h2>
+                  <button id={id.toString()} onClick={() => handleTitleClick(id)}>
+                    {attributes.canonicalTitle}</button>
                   <p>
-                  {id === expandedId ? attributes.synopsis : `${attributes.synopsis.slice(0, 300)}...`}
-                      <span onClick={() => toggleExpansion(id)}>
-                        {id === expandedId ? " Ler menos" : " Ler mais"}
-                      </span>
+                    {id === expandedId ? attributes.synopsis : `${attributes.synopsis.slice(0, 300)}...`}
+                    <span onClick={() => toggleExpansion(id)}>
+                      {id === expandedId ? " Ler menos" : " Ler mais"}
+                    </span>
                   </p>
                   {attributes.ageRating && (
-                    <h6>{`Classificação etária: ${
-                      Age_rating[attributes.ageRating] || attributes.ageRating
-                    }`}</h6>
+                    <h6>{`Classificação etária: ${Age_rating[attributes.ageRating] || attributes.ageRating
+                      }`}</h6>
                   )}
                 </div>
               </li>
             ))
           ) : (
-            <p>Carregando Mangá...</p>
+            <div>Carregando...</div>
           )}
         </ul>
       </div>

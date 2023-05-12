@@ -2,25 +2,9 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
-import { Age_rating } from "../top/Top";
-
-interface Manga {
-  attributes: {
-    canonicalTitle: string;
-    posterImage: {
-      original: string;
-    };
-    description: string;
-    startDate: string;
-    status: string;
-    ageRatingGuide: string;
-    chapterCount: number;
-  };
-}
+import {Kapi, Age_rating, Manga} from "../../componentes/Section";
 
 const mangaId = 14916;
-const Kapi = `https://kitsu.io/api/edge/manga`;
-
 function ViewG() {
   const [manga, setManga] = useState<Manga | null>(null);
 
