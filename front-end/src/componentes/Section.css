@@ -6,10 +6,11 @@
     width: 100%;
 }
 
-.popular h2 {
-    font-size: 24px;
+.popular button {
+    font-size: 15px;
     margin: 0;
     margin-bottom: 10px;
+    background-color:#ECE7FE;
 }
 
 .popular ul {

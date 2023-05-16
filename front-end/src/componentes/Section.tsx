@@ -37,12 +37,15 @@ function Section() {
   const [mangaId, setmangaId] = useState<number>(0);
 
 
+
   const handleTitleClick = (id: number) => {
     setmangaId(id);
-    console.log(id);
+    //console.log(id);
+    
     console.log(mangaId);
-
+    console.log(mangaId);
   }
+
   
   useEffect(() => {
     fetch(`${Kapi}/manga?page[limit]=20&page[offset]=22`)
@@ -78,7 +81,7 @@ function Section() {
                           id={id}
                           onClick={() => {
                             handleTitleClick(id);
-
+                            navigate ('/viewg');
                             }}
                         >
                           {canonicalTitle}
