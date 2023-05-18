@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
@@ -36,10 +36,6 @@ function ViewG() {
     canonicalTitle = "",
     posterImage = { original: "" },
     description = "",
-    startDate = "",
-    status = "",
-    ageRatingGuide = "",
-    chapterCount,
   } = manga?.attributes || {};
 
   const posterImageUrl = posterImage?.original || "";
@@ -49,16 +45,16 @@ function ViewG() {
       <Padrao />
       <div className="mangaview">
         <div className="descrition">
-          <h1>{canonicalTitle}</h1>
+          <h1>{}</h1>
           <ul>
             <li></li>
-            <li>{startDate}</li>
+            <li></li>
             <li id="invisible"></li>
-            <li>{ageRatingGuide}</li>
-            <li>{status}</li>
+            <li></li>
+            <li></li>
           </ul>
           <img src={posterImageUrl} alt="capa do manga" />
-          <p>{description}</p>
+          <p></p>
         </div>
         <div className="captitulo">
           <h1> Capítulos</h1>

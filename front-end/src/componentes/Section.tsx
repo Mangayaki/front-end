@@ -29,8 +29,6 @@ export interface Manga {
     chapterCount: number;
   };
 }
-
-
 function Section() {
   const navigate = useNavigate();
   const [mangaPopular, setMangaPopular] = useState<Manga[]>([]);
@@ -49,7 +47,6 @@ function Section() {
     console.log(mangaIdRef.current);
   }
 
-  
   useEffect(() => {
     fetch(`${Kapi}/manga?page[limit]=20&page[offset]=22`)
       .then((response) => response.json())
