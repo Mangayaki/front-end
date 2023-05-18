@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import { useNavigate} from "react-router-dom";
 import "./Section.css";
 
@@ -29,24 +29,20 @@ export interface Manga {
     chapterCount: number;
   };
 }
-
-
 function Section() {
   const navigate = useNavigate();
   const [mangaPopular, setMangaPopular] = useState([]);
-  const [mangaId, setmangaId] = useState<number>(0);
-
-
+  const mangaIdRef = useRef<number>();
 
   const handleTitleClick = (id: number) => {
-    setmangaId(id);
-    //console.log(id);
-    
-    console.log(mangaId);
-    console.log(mangaId);
-  }
 
-  
+    mangaIdRef.current = id;
+    console.log("O valor do ID é " + id);
+    console.log("O valor da variavel MangaId é " + mangaIdRef.current);
+
+  };
+ 
+
   useEffect(() => {
     fetch(`${Kapi}/manga?page[limit]=20&page[offset]=22`)
       .then((response) => response.json())
@@ -78,7 +74,7 @@ function Section() {
                     <div className="descriptionSection">
                       {id != null ? (
                         <button
-                          id={id}
+                          id={'${id}'}
                           onClick={() => {
                             handleTitleClick(id);
                             navigate ('/viewg');
