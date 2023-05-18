@@ -5,6 +5,15 @@ import "./ViewG.css";
 import {Kapi, Age_rating, Manga} from "../../componentes/Section";
 import { useLocation } from "react-router-dom";
 
+interface MangaData{
+  id: number;
+  attributes:{
+    chapterCount:number;
+  }
+}
+
+
+
 function ViewG() {
   const [manga, setManga] = useState<Manga | null>(null);
   const location = useLocation();
@@ -29,8 +38,10 @@ function ViewG() {
   }
 
   if (!manga) {
-    return <p>Carregando ...</p>;
+    return <div>Carregando ...</div>;
   } 
+
+  const{ chapterCount } = manga.attributes;
 
   const {
     canonicalTitle = "",
