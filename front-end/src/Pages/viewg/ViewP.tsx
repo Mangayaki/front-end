@@ -3,13 +3,21 @@ import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
 
+interface MangaData{
+  id:number;
+  attributes:{
+    chapterCount:number;
+  };
+}
+
+
 function ViewP() {
-  const [, setMangaPrince] = useState([]);
+  const [mangaPrince, setMangaPrince] = useState<MangaData | null>(null);
 
   useEffect(() => {
     fetch("https://kitsu.io/api/edge/manga/?page[limit]=1&page[offset]=127}")
       .then((response) => response.json())
-      .then((response) => setMangaPrince(response.data));
+      .then((response) => setMangaPrince(response.data[0]));
   });
 
   // Função para criar lista de capítulos
@@ -21,6 +29,11 @@ function ViewP() {
     return chapterList;
   }
   
+  if(!mangaPrince){
+    return<div>Loading...</div>;
+  }
+
+  const{ chapterCount } = mangaPrince.attributes;
 
   return (
     <div>
@@ -41,7 +54,7 @@ function ViewP() {
         </div>
         <div className="cap">
           <ul>
-           {createChapterList(50)} {/* Chama a função para criar lista de capítulos com 10 itens */}
+           {createChapterList(chapterCount)} {/* Chama a função para criar lista de capítulos com 50 itens */}
           </ul>
         </div>
       </div>

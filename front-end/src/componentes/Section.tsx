@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import { useNavigate} from "react-router-dom";
 import "./Section.css";
 
@@ -33,17 +33,20 @@ export interface Manga {
 
 function Section() {
   const navigate = useNavigate();
-  const [mangaPopular, setMangaPopular] = useState([]);
-  const [mangaId, setmangaId] = useState<number>(0);
+  const [mangaPopular, setMangaPopular] = useState<Manga[]>([]);
+  const [, setmangaId] = useState<number>(0);
+  const mangaIdRef = useRef<number>(0);
 
 
 
   const handleTitleClick = (id: number) => {
     setmangaId(id);
-    //console.log(id);
-    
-    console.log(mangaId);
-    console.log(mangaId);
+    mangaIdRef.current = id;
+    const queryParams = new URLSearchParams();
+    queryParams.set("mangaId", mangaIdRef.current.toString());
+    navigate(`/viewg?${queryParams.toString()}`);
+    console.log(id);
+    console.log(mangaIdRef.current);
   }
 
   
@@ -78,10 +81,9 @@ function Section() {
                     <div className="descriptionSection">
                       {id != null ? (
                         <button
-                          id={id}
+                        id={`${id}`}
                           onClick={() => {
                             handleTitleClick(id);
-                            navigate ('/viewg');
                             }}
                         >
                           {canonicalTitle}

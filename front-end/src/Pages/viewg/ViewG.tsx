@@ -3,16 +3,22 @@ import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
 import {Kapi, Age_rating, Manga} from "../../componentes/Section";
+import { useLocation } from "react-router-dom";
 
-const mangaId = 14916;
 function ViewG() {
   const [manga, setManga] = useState<Manga | null>(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const mangaId = searchParams.get("mangaId");
+  console.log(mangaId)
 
   useEffect(() => {
+    if(mangaId){
     fetch(`${Kapi}?filter[id]=${mangaId}`)
       .then((response) => response.json())
       .then((response) => setManga(response.data[0]));
-  }, []);
+    }
+    }, [mangaId]);
 
   function createChapterList(numChapters: number): JSX.Element[] {
     const chapterList: JSX.Element[] = [];
@@ -24,7 +30,7 @@ function ViewG() {
 
   if (!manga) {
     return <p>Carregando ...</p>;
-  }
+  } 
 
   const {
     canonicalTitle = "",
@@ -58,7 +64,7 @@ function ViewG() {
           <h1> Capítulos</h1>
         </div>
         <div className="cap">
-          <ul>{createChapterList(chapterCount)}</ul>
+          <ul>{chapterCount !== undefined && createChapterList(chapterCount)}</ul>
         </div>
       </div>
       <Footer />
