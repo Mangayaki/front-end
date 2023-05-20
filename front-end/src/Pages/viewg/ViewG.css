@@ -7,7 +7,7 @@
 .descrition {
     position: relative;
     width: 50%;
-    height: 389px;
+    height: auto;
     left: 3%;
     top: 88px;
     background: #e2dce8;
@@ -28,7 +28,7 @@
 }
 
 .descrition ul {
-    margin-top: 5%;
+    margin-top: auto;
     margin-left: 32%;
     list-style: none;
     display: flex;

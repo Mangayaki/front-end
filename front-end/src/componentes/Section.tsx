@@ -81,6 +81,7 @@ function Section() {
                         id={`${id}`}
                           onClick={() => {
                             handleTitleClick(id);
+                            navigate('/viewg', { state: { mangaId: id } });
                             }}
                         >
                           {canonicalTitle}
