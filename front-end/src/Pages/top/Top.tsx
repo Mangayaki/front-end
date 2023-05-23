@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Header from "../../componentes/Header";
 import { useNavigate} from "react-router-dom";
@@ -9,12 +9,15 @@ function Top() {
   const navigate = useNavigate();
   const [mangaTrends, setMangaTrends] = useState<Manga[]>([]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
-  const [mangaId, setmangaId] = useState<number | null>(null);
-
+  const [, setmangaId] = useState<number | null>(null);
+  const mangaIdRef = useRef<number>(0);
 
   const handleTitleClick = (id: number) => {
     setmangaId(id);
-    console.log(mangaId);
+    mangaIdRef.current = id;
+    const queryParams = new URLSearchParams();
+    queryParams.set("mangaId", mangaIdRef.current.toString());
+    navigate(`/viewg?${queryParams.toString()}`);
   }
 
   useEffect(() => {
@@ -34,7 +37,6 @@ function Top() {
   return (
     <div>
       <Header />
-
       <div className="trend">
         <h2>Top Trend Manga</h2>
         <ul>
@@ -58,7 +60,7 @@ function Top() {
                       {id === expandedId ? " Ler menos" : " Ler mais"}
                     </span>
                   </p>
-                  {attributes.ageRating && (
+                  {attributes.ageRating && ( 
                     <h6>{`Classificação etária: ${Age_rating[attributes.ageRating] || attributes.ageRating
                       }`}</h6>
                   )}

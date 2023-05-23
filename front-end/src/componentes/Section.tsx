@@ -3,7 +3,7 @@ import { useNavigate} from "react-router-dom";
 import "./Section.css";
 
 
-export const Age_rating: Record<string, string> =  { //Classificação de Faixa etária
+export const Age_rating: Record<string, string> =  { // Transforma a Classificação de Faixa etária EN para PT
   G: "Livre",
   PG: "10 anos",
   R: "14 anos",
@@ -13,7 +13,7 @@ export const Age_rating: Record<string, string> =  { //Classificação de Faixa 
 export const Kapi = `https://kitsu.io/api/edge`; //Link padrão da API Kitsu
 
 
-export interface Manga {
+export interface Manga { //
   id: number;
   attributes: {
     canonicalTitle: string;
@@ -29,22 +29,20 @@ export interface Manga {
     chapterCount: number;
   };
 }
+
 function Section() {
+  
   const navigate = useNavigate();
   const [mangaPopular, setMangaPopular] = useState<Manga[]>([]);
   const [, setmangaId] = useState<number>(0);
   const mangaIdRef = useRef<number>(0);
 
-
-
-  const handleTitleClick = (id: number) => {
+  const handleTitleClick = (id: number) => { // Função para salvar o ID do mangar ao Clicar
     setmangaId(id);
     mangaIdRef.current = id;
     const queryParams = new URLSearchParams();
     queryParams.set("mangaId", mangaIdRef.current.toString());
     navigate(`/viewg?${queryParams.toString()}`);
-    console.log(id);
-    console.log(mangaIdRef.current);
   }
 
   useEffect(() => {

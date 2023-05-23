@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
 import "./ViewG.css";
-import { Age_rating, Kapi, Manga } from "../../componentes/Section";
+import { Age_rating, Kapi } from "../../componentes/Section";
 
 const ViewG = () => {
   const location = useLocation();
@@ -14,31 +14,32 @@ const ViewG = () => {
     // Verifique se há um ID de mangá na localização atual
     if (location.state && location.state.mangaId) {
       const mangaId = location.state.mangaId;
-      console.log(mangaId);
+
 
       // Faça uma solicitação para obter os detalhes do mangá com o ID fornecido
-      fetch(`https://kitsu.io/api/edge/manga/${mangaId}`)
+      fetch(`${Kapi}/manga/${mangaId}`)
         .then((response) => response.json())
         .then((data) => SetViewG(data.data))
         .catch((error) => console.error(error));
     }
   }, [location.state]);
 
-  
-
   if (!ViewG) {
     return <div>Carregando...</div>;
   }
 
-    //Função para criar uma lista de capítulos
-    function createChapterList(numChapters: number): JSX.Element[] {
-      const chapterList: JSX.Element[] = [];
-      for (let i = 1; i <= numChapters; i++) {
-        chapterList.push(<li key={i}>Capítulo {i}</li>);
-      }
-      return chapterList;
+  //Função para criar uma lista de capítulos
+  function createChapterList(numChapters: number): JSX.Element[] {
+    const chapterList: JSX.Element[] = [];
+    if (numChapters == null) {
+      numChapters = 1000;
     }
-
+    for (let i = 1; i <= numChapters; i++) {
+      chapterList.push(<li key={i}>Capítulo {i}</li>);
+    }
+    return chapterList;
+  }
+  
   //Desestruturando atributos de mangá e fornecendo valores padrão
   const {
     attributes: {
@@ -53,7 +54,7 @@ const ViewG = () => {
       chapterCount,
     },
   } = ViewG;
-  
+
   return (
     <div>
       <Padrao />
@@ -67,13 +68,15 @@ const ViewG = () => {
               Gênero:
               {ageRatingGuide
                 ? `${Age_rating[ageRatingGuide] || ageRatingGuide}`
-                : "not found"}
+                : "Sem Classificação"}
             </li>
             <li>
               Classicação Etária:
-              
+              {ageRating &&
+                `${Age_rating[ageRating] ||
+                ageRating
+                }`}{" "}
             </li>
-            {/* Adicione outros dados relevantes do mangá */}
           </ul>
           <img src={original} alt="capa do manga" />
           <p>
@@ -86,11 +89,14 @@ const ViewG = () => {
         <div className="captitulo">
           <h1>Capítulos</h1>
         </div>
+        <div>
+          <button id={``} // Botão de Favoritos
+            onClick={() => { }}> Marcar como Favorito</button>
+        </div>
         <div className="cap">
           <ul>
-            {chapterCount !== undefined &&
+            {chapterCount !== undefined && // Quantidade de capitulos
               createChapterList(chapterCount)}
-
           </ul>
         </div>
       </div>
