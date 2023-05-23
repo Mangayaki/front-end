@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../componentes/Footer";
 import Header from "../../componentes/Header";
+import { useNavigate} from "react-router-dom";
 import './Topison.css';
-import {Kapi, Age_rating, Manga} from "../../componentes/Section";
+import { Kapi, Age_rating, Manga } from "../../componentes/Section";
 
 function Top() {
+  const navigate = useNavigate();
   const [mangaTrends, setMangaTrends] = useState<Manga[]>([]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [mangaId, setmangaId] = useState<number | null>(null);
@@ -41,8 +43,15 @@ function Top() {
               <li key={id}>
                 <img src={attributes.posterImage.original} alt={`Poster do Mangá com ID ${id}`} />
                 <div className="descriptionTop">
-                  <button id={id.toString()} onClick={() => handleTitleClick(id)}>
-                    {attributes.canonicalTitle}</button>
+                  <button
+                    id={`${id}`}
+                    onClick={() => {
+                      handleTitleClick(id);
+                      navigate('/viewg', { state: { mangaId: id } });
+                    }}
+                  >
+                    {attributes.canonicalTitle}
+                  </button>
                   <p>
                     {id === expandedId ? attributes.synopsis : `${attributes.synopsis.slice(0, 300)}...`}
                     <span onClick={() => toggleExpansion(id)}>
