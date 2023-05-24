@@ -54,7 +54,7 @@ function Top() {
                   >
                     {attributes.canonicalTitle}
                   </button>
-                  <p>
+                  <p className={id === expandedId ? 'expandable' : 'collapsed'}>
                     {id === expandedId ? attributes.synopsis : `${attributes.synopsis.slice(0, 300)}...`}
                     <span onClick={() => toggleExpansion(id)}>
                       {id === expandedId ? " Ler menos" : " Ler mais"}

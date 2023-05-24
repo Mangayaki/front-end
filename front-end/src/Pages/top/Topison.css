@@ -41,6 +41,7 @@
     margin: 0;
     margin-bottom: 10px;
     background-color: #ECE7FE;
+    font-weight: bold;
 }
 
 .descriptionTop {
@@ -60,10 +61,11 @@
     color: #888;
 }
 
-.descriptionTop p{
+.collapsed{
     text-align: justify;
 }
 
-.expandido p{
-    font-size: 16px;
+.expandable {
+    font-size: 17px;
+    text-align: justify;
 }
