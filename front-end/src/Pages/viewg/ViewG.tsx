@@ -9,15 +9,10 @@ const ViewG = () => {
   const location = useLocation();
   const [ViewG, SetViewG] = useState(null);
 
-
   useEffect(() => {
-    // Verifique se há um ID de mangá na localização atual
-    if (location.state && location.state.mangaId) {
+    if (location.state && location.state.mangaId) { // Verifique se há um ID de mangá na localização atual
       const mangaId = location.state.mangaId;
-
-
-      // Faça uma solicitação para obter os detalhes do mangá com o ID fornecido
-      fetch(`${Kapi}/manga/${mangaId}`)
+      fetch(`${Kapi}/manga/${mangaId}`)            // Faça uma solicitação para obter os detalhes do mangá com o ID fornecido
         .then((response) => response.json())
         .then((data) => SetViewG(data.data))
         .catch((error) => console.error(error));
@@ -28,8 +23,7 @@ const ViewG = () => {
     return <div>Carregando...</div>;
   }
 
-  //Função para criar uma lista de capítulos
-  function createChapterList(numChapters: number): JSX.Element[] {
+  function createChapterList(numChapters: number): JSX.Element[] { //Função para criar uma lista de capítulos
     const chapterList: JSX.Element[] = [];
     if (numChapters == null) {
       numChapters = 1000;
@@ -40,8 +34,7 @@ const ViewG = () => {
     return chapterList;
   }
   
-  //Desestruturando atributos de mangá e fornecendo valores padrão
-  const {
+  const {   //Desestruturando atributos de mangá e fornecendo valores padrão
     attributes: {
       canonicalTitle,
       posterImage: { original },
@@ -80,8 +73,7 @@ const ViewG = () => {
           </ul>
           <img src={original} alt="capa do manga" />
           <p>
-            {
-              // Use a synopsis se a description estiver vazia
+            { // Use a synopsis se a description estiver vazia
               description ? `${description}` : `${synopsis}`
             }
           </p>
@@ -91,7 +83,8 @@ const ViewG = () => {
         </div>
         <div>
           <button id={``} // Botão de Favoritos
-            onClick={() => { }}> Marcar como Favorito</button>
+            onClick={() => { }}> Marcar como Favorito ⭐ </button>
+
         </div>
         <div className="cap">
           <ul>

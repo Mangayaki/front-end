@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState} from "react";
-import { useNavigate} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Section.css";
 
-
-export const Age_rating: Record<string, string> =  { // Transforma a Classificação de Faixa etária EN para PT
+export const Age_rating: Record<string, string> = { // Transforma a Classificação de Faixa etária EN para PT
   G: "Livre",
   PG: "10 anos",
   R: "14 anos",
@@ -11,7 +10,6 @@ export const Age_rating: Record<string, string> =  { // Transforma a Classifica�
 };
 
 export const Kapi = `https://kitsu.io/api/edge`; //Link padrão da API Kitsu
-
 
 export interface Manga { //
   id: number;
@@ -30,12 +28,16 @@ export interface Manga { //
   };
 }
 
+const MangaperPagina = 20;
+const minPage = 5;
+
 function Section() {
-  
   const navigate = useNavigate();
   const [mangaPopular, setMangaPopular] = useState<Manga[]>([]);
   const [, setmangaId] = useState<number>(0);
   const mangaIdRef = useRef<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const offsetManga = currentPage * MangaperPagina;
 
   const handleTitleClick = (id: number) => { // Função para salvar o ID do mangar ao Clicar
     setmangaId(id);
@@ -46,59 +48,85 @@ function Section() {
   }
 
   useEffect(() => {
-    fetch(`${Kapi}/manga?page[limit]=20&page[offset]=22`)
+    fetch(`${Kapi}/manga?page[limit]=${MangaperPagina}&page[offset]=${offsetManga}`)
       .then((response) => response.json())
       .then((response) => setMangaPopular(response.data))
       .catch((error) => console.error(error));
-  }, []);
+  }, [currentPage, offsetManga]);
 
-  return (
-    <div className="homeC">
-      <div className="popular">
-        <h2>Mangás</h2>
-        <ul>
-          {mangaPopular
-            ? mangaPopular
-              .map(
-                ({
-                  id,
-                  attributes: {
-                    canonicalTitle,
-                    posterImage: { original },
-                    ageRating,
-                  },
-                }) => (
-                  <li key={id}>
-                    <img
-                      src={original}
-                      alt={`Poster do Mangá com ID ${id}`}
-                    />
-                    <div className="descriptionSection">
-                      {id != null ? (
-                        <button
-                        id={`${id}`}
-                          onClick={() => {
-                            handleTitleClick(id);
-                            navigate('/viewg', { state: { mangaId: id } });
+
+    const handlePageChange = (selected: { selected: number }) => {
+      setCurrentPage(selected.selected);
+    };
+    const renderPaginationButtons = () => {
+      const buttons = [];
+      const totalPages = Math.ceil(mangaPopular.length / MangaperPagina);
+      const pageCount = Math.max(totalPages, minPage);
+  
+      for (let i = 0; i < pageCount; i++) {
+        buttons.push(
+          <button
+            key={i}
+            className={currentPage === i ? "active" : ""}
+            onClick={() => handlePageChange({ selected: i })}
+          >
+            {i + 1}
+          </button>
+        );
+      }
+  
+      return buttons;
+    };
+    return (
+      <div className="homeC">
+        <div className="popular">
+          <h2>Mangás</h2>
+          <ul>
+            {mangaPopular
+              ? mangaPopular
+                .map(
+                  ({
+                    id,
+                    attributes: {
+                      canonicalTitle,
+                      posterImage: { original },
+                      ageRating,
+                    },
+                  }) => (
+                    <li key={id}>
+                      <img
+                        src={original}
+                        alt={`Poster do Mangá com ID ${id}`}
+                      />
+                      <div className="descriptionSection">
+                        {id != null ? (
+                          <button
+                            id={`${id}`}
+                            onClick={() => {
+                              handleTitleClick(id);
+                              navigate('/viewg', { state: { mangaId: id } });
                             }}
-                        >
-                          {canonicalTitle}
-                        </button>
-                      ) : null}
-                      {ageRating ? (
-                        <h6>{`Classificação etária: ${Age_rating[ageRating] || ageRating
-                          }`}</h6>
-                      ) : (
-                        <h6>Sem Classificação</h6>
-                      )}
-                    </div>
-                  </li>
+                          >
+                            {canonicalTitle}
+                          </button>
+                        ) : null}
+                        {ageRating ? (
+                          <h6>{`Classificação etária: ${Age_rating[ageRating] || ageRating //Caso não haja classificação apresentar a mensagem Sem Classificação
+                            }`}</h6>
+                        ) : (
+                          <h6>Sem Classificação</h6>
+                        )}
+                      </div>
+                    </li>
+                  )
                 )
-              )
-            : (<div>Carregando..</div>)}
-        </ul>
+              : (<div>Carregando..</div>)}
+          </ul>
+          <div className="pagination">
+            {renderPaginationButtons()}
+          </div>
+        </div>
       </div>
-    </div>
-  );
-}
-export default Section;
+    );
+  }
+  export default Section;
