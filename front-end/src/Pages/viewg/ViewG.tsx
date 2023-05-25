@@ -2,12 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
+import starv from '../../componentes/imagens/star1.png';
+import starc from '../../componentes/imagens/star.png';
 import "./ViewG.css";
 import { Age_rating, Kapi } from "../../componentes/Section";
 
 const ViewG = () => {
   const location = useLocation();
   const [ViewG, SetViewG] = useState(null);
+  const [favorito, setFavorito] = useState(false);
+
+   //botao de favorito, mudar estrela para preenchida
+  const handleClick = () => {
+    setFavorito(!favorito);
+  }
 
   useEffect(() => {
     if (location.state && location.state.mangaId) { // Verifique se há um ID de mangá na localização atual
@@ -54,6 +62,8 @@ const ViewG = () => {
       <div className="mangaview">
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
+          <button className="favbutton" id={``} // Botão de Favoritoss
+            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>       
           <ul>
             <li>Data de Inicio:{startDate}</li>
             <li>Status:{status}</li>
@@ -80,11 +90,6 @@ const ViewG = () => {
         </div>
         <div className="captitulo">
           <h1>Capítulos</h1>
-        </div>
-        <div>
-          <button id={``} // Botão de Favoritos
-            onClick={() => { }}> Marcar como Favorito ⭐ </button>
-
         </div>
         <div className="cap">
           <ul>

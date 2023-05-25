@@ -74,7 +74,6 @@ function Section() {
           </button>
         );
       }
-  
       return buttons;
     };
     return (
