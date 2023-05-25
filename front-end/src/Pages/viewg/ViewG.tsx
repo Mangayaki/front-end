@@ -12,7 +12,7 @@ const ViewG = () => {
   const [ViewG, SetViewG] = useState(null);
   const [favorito, setFavorito] = useState(false);
 
-   //botao de favorito, mudar estrela para preenchida
+  //botao de favorito, mudar estrela para preenchida
   const handleClick = () => {
     setFavorito(!favorito);
   }
@@ -33,15 +33,18 @@ const ViewG = () => {
 
   function createChapterList(numChapters: number): JSX.Element[] { //Função para criar uma lista de capítulos
     const chapterList: JSX.Element[] = [];
-    if (numChapters == null) {
+    if (numChapters == null) { 
       numChapters = 1000;
     }
     for (let i = 1; i <= numChapters; i++) {
       chapterList.push(<li key={i}>Capítulo {i}</li>);
+
     }
+
+    // Retorna o array de elementos de capítulo
     return chapterList;
   }
-  
+
   const {   //Desestruturando atributos de mangá e fornecendo valores padrão
     attributes: {
       canonicalTitle,
@@ -56,14 +59,19 @@ const ViewG = () => {
     },
   } = ViewG;
 
+
+
+
+
   return (
     <div>
       <Padrao />
       <div className="mangaview">
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
-          <button className="favbutton" id={``} // Botão de Favoritoss
-            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>       
+          {/* Fazer a verificação se estar logado na conta, caso não esteja não apresentar o botão de favoritos */}
+          <button className="favbutton" id={``} // Botão de Favoritos
+            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>
           <ul>
             <li>Data de Inicio:{startDate}</li>
             <li>Status:{status}</li>

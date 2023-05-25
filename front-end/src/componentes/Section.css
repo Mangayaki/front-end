@@ -53,3 +53,8 @@
     margin-top: 5px;
     color: #888;
 }
+.pagination {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
