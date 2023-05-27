@@ -21,8 +21,8 @@ function RegisterPage() {
     })
 
     const navigate = useNavigate();
-    const goToInteressePage = () => {
-        navigate('/interesse');
+    const goToUserHome = () => {
+        navigate('/userhome');
     }
     const goToHomePage = () => {
         navigate('/');
@@ -72,7 +72,7 @@ function RegisterPage() {
                                     value={form.password.value} />
                             <div className="ouregister" />
                             <div className="twoouregister" />
-                            <button type='button' data-testid="avanca-button" onClick={goToInteressePage}> Avançar </button>
+                            <button type='button' data-testid="avanca-button" onClick={goToUserHome}> Avançar </button>
                         </form>
                     </div>
                 </section>
