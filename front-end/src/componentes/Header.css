@@ -67,6 +67,49 @@ button:disabled {
     margin: -10px;
 }
 
+.searchbar{
+    margin-left: 40vh;
+    width: 100%;
+}
+
+.searchbar button{
+    background: #D7E0FF;
+    box-shadow:  1px 0 rgba(0,0,0,0.1);
+    border-radius: 4px;
+    height: 25px;
+    width: 28px;
+}
+
+.searchbar img{
+    height: 15px;
+    width: 15px;
+}
+
+.searchbar input{
+    height: 30px;
+    width: 41.6%;
+    background-color: #D7E0FF;
+}
+
+.searchbarresults ul{
+    list-style: none;
+    background-color: #E6E6FA;
+    width: 44%;
+    margin-block: -1.1%;
+}
+
+.searchbarresults li{
+    height: 30px;
+    margin-block-start: 8px;
+}
+
+.searchbarresults a{
+    text-decoration: none;
+    color: #000;
+    font-family: 'Niramit', sans-serif;
+    
+}
+
 
 /* ---------------- Navbar and burger menu ------------------ */
 .navheader{

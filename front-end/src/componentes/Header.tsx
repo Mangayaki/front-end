@@ -5,6 +5,7 @@ import logo from './imagens/polvinhobranco.png';
 import topicon from './imagens/topicon.png';
 import homeicon from './imagens/homeicon.png';
 import usericon from './imagens/usericon.png';
+import lupa from './imagens/lupa.png';
 import Slide from './slide';
 import './Header.css';
 import { Kapi, Manga } from "../componentes/Section";
@@ -64,12 +65,12 @@ const Header = () => {
                     <div className={burger_class} ></div>
                 </div>
                 <img src={logo} alt='logo' className='Logo' onClick={goToHomePage}></img>
-                <div>
+                <div className="searchbar">
                     <form onSubmit={handleSearch}>
-                        <input type="text" value={searchManga} onChange={handleSearchInputChange} placeholder="Buscar manga..." />
-                        <button type="submit">Pesquisar</button>
+                        <input type="text" value={searchManga} onChange={handleSearchInputChange} placeholder="Buscar manga..."></input>
+                        <button type="submit"><img src={lupa} alt='lupa'></img></button>
                     </form>
-                    <div>
+                    <div className="searchbarresults">
                         {searchResults.length > 0 &&
                             <ul>
                                 {searchResults.map(Manga => (

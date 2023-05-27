@@ -26,7 +26,7 @@
 .descrition p {
     width: 66%;
     margin-left: 28%;
-    margin-top: -23%;
+    margin-top: -37%;
     text-align: justify;
 }
 
@@ -61,15 +61,15 @@ color: #8472C6;
 
 .descrition img {
     width: 200px;
-    height: 309px;
-    margin: -100px 20px 20px 9px;
+    height: 300px;
+    margin: -80px 20px 20px 9px;
     border-radius: 3%;
     filter: drop-shadow(7px 8px 4px rgba(0, 0, 0, 0.25));
 }
 
 .favbutton{
     background: none;
-    margin: 0 0 0 62%;
+    margin: 12% 0 0 90%;
 }
 
 .favbutton img{

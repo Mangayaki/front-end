@@ -69,9 +69,6 @@ const ViewG = () => {
       <div className="mangaview">
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
-          {/* Fazer a verificação se estar logado na conta, caso não esteja não apresentar o botão de favoritos */}
-          <button className="favbutton" id={``} // Botão de Favoritos
-            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>
           <ul>
             <li>Data de Inicio:{startDate}</li>
             <li>Status:{status}</li>
@@ -90,6 +87,9 @@ const ViewG = () => {
             </li>
           </ul>
           <img src={original} alt="capa do manga" />
+                    {/* Fazer a verificação se estar logado na conta, caso não esteja não apresentar o botão de favoritos */}
+                    <button className="favbutton" id={``} // Botão de Favoritos
+            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>
           <p>
             { // Use a synopsis se a description estiver vazia
               description ? `${description}` : `${synopsis}`
