@@ -58,3 +58,13 @@
     flex-wrap: nowrap;
     justify-content: center;
 }
+
+.pagination button{
+    color: #000; 
+}
+
+.pagination .active{
+    color:#736F77;
+    background-color:#C5BEE2;
+    border-radius: 4px;
+}
