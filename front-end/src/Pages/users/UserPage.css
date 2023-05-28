@@ -90,14 +90,13 @@ button:disabled {
 }
 
 .usermenu {
-    width: 13%;
-    height: 41vh;
+    width: 15%;
+    height: 40vh;
     background-color: #4C369E;
     position: fixed;
-    top: 100px;
+    top: 68px;
     border-radius: 10px;
-    z-index: 2;
-    left: 86%;
+    left: 85%;
 }
 
 /*click event*/
@@ -105,8 +104,7 @@ button:disabled {
 
 .menuuser-bar.clicked:nth-child(1){
     display: flex;
-    margin-left: auto;
-    width: 253px;
+    margin-left: -190%;
     height: 102px;
     background:#4C369E;
     border-radius: 10px;

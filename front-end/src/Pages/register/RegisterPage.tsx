@@ -93,8 +93,6 @@ const RegisterPage = () => {
                             type='required'
                             value={form.password.value}
                         />
-                        <div className='ouregister' />
-                        <div className='twoouregister' />
                         <button type='button' data-testid='avanca-button' onClick={handleSubmit}>
                             Avançar
                         </button>

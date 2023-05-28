@@ -39,25 +39,33 @@ section.area-register {
     width: 470px;
 }
 
-.ouregister {
-    position: absolute;
-    width: 333px;
-    height: 4px;
-    left: 367px;
-    top: 422px;
-    background: #4C369E;
-}
-
-.twoouregister {
-    position: absolute;
-    width: 333px;
-    height: 4px;
-    left: -1px;
-    top: 422px;
-    background: #4C369E;
-}
-
 .Logoin {
     display: flex;
     height: 100px;
+}
+
+/*responsive*/
+
+@media only screen and (max-width:1440px){
+    .register{
+        width: 60%;
+        padding: 5%;
+    }
+    section.area-register{
+        left: 10%;
+        width: 83%;
+    }
+}
+
+@media only screen and (max-width:900px){
+    .register{
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width:600px){
+    section.area-register{
+        left:-5%;
+        width: 50%;
+    }
 }

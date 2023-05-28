@@ -64,7 +64,6 @@ function UserPage() {
                 <div className="menuuser-usermenu" onClick={updateUserMenu}>
                     <div className={menuUser_class}>
                         <img src={usericon} alt='usericon'></img>
-                        <h2>Nome do Usuário</h2>                
                     </div>
                     <div className={menuUser_class}>
                         <button type="button" className="buttonzinhologout">Logout</button>
