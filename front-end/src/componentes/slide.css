@@ -23,9 +23,10 @@
 
 
 
-@media only screen and (max-width:1200px){
+@media only screen and (max-width:1201px){
     .carousel{
-        height: 90vh;
+        height: 86vh;
+
     }
     .carousel .slide{
         height: 100vh;
@@ -34,12 +35,26 @@
         margin:10vh auto;
         width: 100vw;
     }
+    .image{
+        margin: -1% auto;
+    }
 }
 
-
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 1171px){
     .carousel{
-        height: 80vh;
+        height: 83vh;
+    }
+}
+
+@media only screen and (max-width: 1101px){
+    .carousel{
+        height: 83vh;
+    }
+}
+
+@media only screen and (max-width: 971px){
+    .carousel{
+        height: 73vh;
     }
     .carousel .slide img{
         margin:10vh auto;
@@ -48,9 +63,9 @@
 }
 
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 771px){
     .carousel{
-        height: 70vh;
+        height: 59vh;
     }
     .carousel .slide img{
         margin:10vh auto;
@@ -59,9 +74,9 @@
 }
 
 
-@media only screen and (max-width:650px){
+@media only screen and (max-width:671px){
     .carousel{
-        height: 60vh;
+        height: 52vh;
     }
     .carousel .slide img{
         margin:10vh auto;
@@ -69,13 +84,46 @@
     }
 }
 
-
-@media only screen and (max-width:500px){
+@media only screen and (max-width:571px){
+    .carousel-root{
+        width: 111%;
+    }
     .carousel{
-        height: 50vh;
+        height:46vh;
+    }
+}
+
+
+@media only screen and (max-width:416px){
+    .carousel{
+        height: 37vh;
+        margin-left: 13%;
+        margin-top: -5%;
     }
     .carousel .slide img{
         margin:10vh auto;
         width: 100vw;
+    }
+    .carousel-root{
+        width: 126%;
+    }
+}
+
+@media only screen and (max-width:360px){
+    .carousel{
+        height: 34vh;
+    }
+    .carousel-root{
+        width: 138%;
+    }
+}
+
+@media only screen and (max-width:320px){
+    .carousel{
+        height: 34vh;
+        margin-left: 17%;
+    }
+    .carousel-root{
+        width: 148%;
     }
 }

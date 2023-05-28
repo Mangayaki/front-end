@@ -1,9 +1,9 @@
 .trend {
-    margin: 15%;
+    margin: 10%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 356px;
-    padding-right: 356px;
+    padding-left: 10%;
+    padding-right: 10%;
     width: 100%;
 }
 
@@ -20,6 +20,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
 }
 
 .trend li {
@@ -66,6 +67,48 @@
 }
 
 .expandable {
-    font-size: 17px;
+    font-size: 14px;
     text-align: justify;
+}
+
+
+@media only screen and (max-width:950px){
+    .trend{
+        margin-top:20%;
+        padding-left: 5%;
+    }
+    .trend ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    .trend li {
+        width: calc(95% - 10px);
+    }
+
+}
+
+@media only screen and (max-width:571px){
+    .trend li{
+        width: calc(115% - 10px);
+    }
+}
+
+@media only screen and (max-width:415px){
+    .trend{
+        margin-top:30%;
+    }
+    
+    .trend img{
+        width: 125px;
+        height: 178px;
+    }
+    .trend li{
+        width: calc(134% - 10px);
+    }
+}
+
+@media only screen and (max-width:320px){
+    .trend li{
+        width: calc(165% - 10px);
+    }
 }

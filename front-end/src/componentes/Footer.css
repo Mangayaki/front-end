@@ -11,3 +11,40 @@ footer h3{
     font-size: initial;
     text-align: -webkit-center;
 }
+
+
+/*responsive*/
+@media only screen and (max-width:610px){
+    footer{
+        width: 111%;
+    }
+
+}
+
+@media only screen and (max-width:500px){
+    footer{
+        width: 123%;
+    }
+
+}
+
+@media only screen and (max-width:415px){
+    footer{
+        width: 126%;
+    }
+
+}
+
+@media only screen and (max-width:340px){
+    footer{
+        width: 148%;
+    }
+
+}
+
+@media only screen and (min-width:341px) and (max-width:399px){
+    footer{
+        width: 138%;
+    }
+
+}
