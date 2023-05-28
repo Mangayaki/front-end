@@ -12,7 +12,7 @@
 
 .user {
     display: flex;
-    margin-left: auto;
+    margin-left: -65vh;
 }
 
 .buttonzinho {
@@ -68,7 +68,7 @@ button:disabled {
 }
 
 .searchbar{
-    margin-left: 40vh;
+    margin-left: 20vh;
     width: 100%;
 }
 
@@ -94,12 +94,13 @@ button:disabled {
 .searchbarresults ul{
     list-style: none;
     background-color: #E6E6FA;
-    width: 44%;
+    width: 41.3%;
     margin-block: -1.1%;
+    margin-left: 0.2%;
+    margin-top: -0.5%;
 }
 
 .searchbarresults li{
-    height: 30px;
     margin-block-start: 8px;
 }
 
@@ -190,38 +191,94 @@ button:disabled {
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
 }
 
-@media only screen and (max-width:950){
+/*responsive*/
+
+@media only screen and (max-width:1170px){
+    .searchbar{
+        margin-left:10vh;
+    }
+    .searchbarresults ul{
+        width: 41.3%;
+        margin-top: -1.2%;
+    }
+    .user{
+        margin-left: -56vh;
+    }
+}
+
+
+
+@media only screen and (max-width:950px){
     .menu{
         width: 27%;
         height: 57vh;
     }
+    .Logo{
+        display: none;
+    }
+    .user{
+        margin-left: -40vh;
+    }
 
 }
 
-@media only screen and (max-width:750px){
+@media only screen and (max-width:770px){
     .menu{
         height: 43vh;
         width: 27%;
     }
+    .searchbar{
+        margin-left:13vh;
+    }
+    .searchbarresults ul{
+        width: 41.3%;
+        margin-top: -1.2%;
+    }
+    .user{
+        margin-left: -32vh;
+    }
+
 }
 
-@media only screen and (max-width:650px){
+@media only screen and (max-width:670px){
     .menu{
         height: 43vh;
         width: 33%;
     }
+    .searchbar{
+        margin-left:7vh;
+    }
+    .user img{
+        display: none;
+    }
 }
 
-@media only screen and (max-width:500px){
+@media only screen and (max-width:570px){
     .menu{
         height: 43vh;
         width: 42%;
     }
+    .user{
+        margin-left: -28vh;
+    }
+
 }
 
-@media only screen and (max-width:400px){
+@media only screen and (max-width:415px){
     .menu{
         height: 43vh;
         width: 50%;
+    }
+    .searchbar{
+        margin-left:3vh;
+    }
+    .user{
+        margin-left: -25vh;
+    }
+}
+
+@media only screen and (max-width:320px){
+    .user{
+        margin-left: -23vh;
     }
 }

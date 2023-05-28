@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 describe('registro', () =>{
-    test('given user clicks on avanca button, then go to interesse page', async () => {
+    test('given user clicks on avanca button, then go to user home', async () => {
         render(
             <BrowserRouter>
                 <Routes>
@@ -17,6 +17,6 @@ describe('registro', () =>{
         const avancaButton = screen.getByTestId('avanca-button');
         await userEvent.click(avancaButton);
         
-        expect(window.location.pathname).toEqual('/interesse');
+        expect(window.location.pathname).toEqual('/userhome');
     })
 })

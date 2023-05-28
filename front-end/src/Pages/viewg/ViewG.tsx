@@ -88,7 +88,7 @@ const ViewG = () => {
 
   return (
     <div>
-      <Padrao />
+      <Padrao/>
       <div className="mangaview">
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
