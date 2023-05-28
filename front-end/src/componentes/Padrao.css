@@ -148,38 +148,73 @@ button:disabled {
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
 }
 
-@media only screen and (max-width:950){
+/*responsivi*/
+
+@media only screen and (max-width:1170px){
+    .userpadrao{
+        margin-left: -56vh;
+    }
+}
+
+
+
+
+@media only screen and (max-width:950px){
     .menupadrao{
         width: 22%;
         height: 43vh;
     }
 
+    .Logopadrao{
+        display: none;
+    }
+    .userpadrao{
+        margin-left: -40vh;
+    }
 }
 
-@media only screen and (max-width:750px){
+@media only screen and (max-width:770px){
     .menupadrao{
         height: 43vh;
         width: 27%;
     }
+    .userpadrao{
+        margin-left: -32vh;
+    }
 }
 
-@media only screen and (max-width:650px){
+@media only screen and (max-width:670px){
     .menupadrao{
         height: 43vh;
         width: 33%;
     }
+    .userpadrao img{
+        display: none;
+    }
 }
 
-@media only screen and (max-width:500px){
+@media only screen and (max-width:570px){
     .menupadrao{
         height: 43vh;
         width: 42%;
     }
+    .userpadrao{
+        margin-left: -28vh;
+    }
 }
 
-@media only screen and (max-width:400px){
+@media only screen and (max-width:415px){
     .menupadra{
         height: 43vh;
         width: 50%;
+    }
+    .userpadrao{
+        margin-left: -25vh;
+    }
+}
+
+@media only screen and (max-width:320px){
+    .userpadrao{
+        margin-left: -23vh;
     }
 }

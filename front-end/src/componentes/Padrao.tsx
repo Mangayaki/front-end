@@ -7,6 +7,7 @@ import homeicon from './imagens/homeicon.png';
 import usericon from './imagens/usericon.png';
 import lupa from './imagens/lupa.png';
 import "./Padrao.css";
+import "./Header.css";
 import { Kapi, Manga } from "../componentes/Section";
 
 const Padrao = () => {
