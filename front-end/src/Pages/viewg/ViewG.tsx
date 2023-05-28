@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from "../../componentes/Footer";
 import Padrao from "../../componentes/Padrao";
@@ -6,11 +6,13 @@ import starv from '../../componentes/imagens/star1.png';
 import starc from '../../componentes/imagens/star.png';
 import "./ViewG.css";
 import { Age_rating, Kapi } from "../../componentes/Section";
+import axios from 'axios'
 
 const ViewG = () => {
   const location = useLocation();
   const [ViewG, SetViewG] = useState(null);
   const [favorito, setFavorito] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   //botao de favorito, mudar estrela para preenchida
   const handleClick = () => {
@@ -24,8 +26,33 @@ const ViewG = () => {
         .then((response) => response.json())
         .then((data) => SetViewG(data.data))
         .catch((error) => console.error(error));
+
+
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(!!token);
     }
   }, [location.state]);
+
+
+  const adicionarAosFavoritos = () => { //Extrir o ID e o Titulo do manga de ViewG
+    if (ViewG) {
+      const { id, canonicalTitle } = ViewG;
+
+      const dados = {
+        id: id,
+        canonicalTitle: canonicalTitle,
+      };
+
+      axios
+        .post("http://127.0.0.1:8000/api/user-favs/", dados)
+        .then((response: any) => { //Manipular a resposta da API, se necessário
+          console.log("Mangá adicionado aos favoritos", response.data)
+        })
+        .catch((error: any) => { //Lidar com erros, se houver algum
+          console.error("Error ao adicionar aos favoritos", error);
+        })
+    }
+  };
 
   if (!ViewG) {
     return <div>Carregando...</div>;
@@ -33,7 +60,7 @@ const ViewG = () => {
 
   function createChapterList(numChapters: number): JSX.Element[] { //Função para criar uma lista de capítulos
     const chapterList: JSX.Element[] = [];
-    if (numChapters == null) { 
+    if (numChapters == null) {
       numChapters = 1000;
     }
     for (let i = 1; i <= numChapters; i++) {
@@ -59,10 +86,6 @@ const ViewG = () => {
     },
   } = ViewG;
 
-
-
-
-
   return (
     <div>
       <Padrao />
@@ -87,9 +110,18 @@ const ViewG = () => {
             </li>
           </ul>
           <img src={original} alt="capa do manga" />
-                    {/* Fazer a verificação se estar logado na conta, caso não esteja não apresentar o botão de favoritos */}
-                    <button className="favbutton" id={``} // Botão de Favoritos
-            onClick={handleClick}> <img src={favorito ? starc : starv} alt="favorito"></img></button>
+          {isLoggedIn && (
+  <button
+    className="favbutton"
+    id={``}
+    onClick={() => {
+      handleClick();
+      adicionarAosFavoritos();
+    }}
+  >
+    <img src={favorito ? starc : starv} alt="favorito" />
+  </button>
+)} 
           <p>
             { // Use a synopsis se a description estiver vazia
               description ? `${description}` : `${synopsis}`
@@ -107,7 +139,7 @@ const ViewG = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }
 
