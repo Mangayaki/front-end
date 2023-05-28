@@ -93,20 +93,20 @@ const ViewG = () => {
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
           <ul>
-            <li>Data de Inicio:{startDate}</li>
-            <li>Status:{status}</li>
+            <li>Data de Inicio: {startDate}</li>
+            <li>Status: {status}</li>
             <li>
-              Gênero:
+              Gênero: 
               {ageRatingGuide
                 ? `${Age_rating[ageRatingGuide] || ageRatingGuide}`
-                : "Sem Classificação"}
+                : " Sem Classificação"}
             </li>
             <li>
-              Classicação Etária:
+              Classicação Etária: 
               {ageRating &&
                 `${Age_rating[ageRating] ||
                 ageRating
-                }`}{" "}
+                }`}{"   "}
             </li>
           </ul>
           <img src={original} alt="capa do manga" />
