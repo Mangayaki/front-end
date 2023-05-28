@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const RegisterPage = () => {
     const navigate = useNavigate();
-<<<<<<< HEAD
     const [form, setForm] = useState({
         email: { value: '', hasChanged: false },
         password: { value: '', hasChanged: false }
@@ -43,11 +42,6 @@ const RegisterPage = () => {
     };
 
 
-=======
-    const goToUserHome = () => {
-        navigate('/userhome');
-    }
->>>>>>> b0c5742170526ba3c10d4a28038f112838e1a13f
     const goToHomePage = () => {
         navigate('/');
     };
@@ -111,39 +105,4 @@ const RegisterPage = () => {
     );
 };
 
-<<<<<<< HEAD
 export default RegisterPage;
-=======
-                                <ValidationError
-                                    hasChanged={form.email.hasChanged}
-                                    erroMessage='Email é inválido'
-                                    testId='email-invalid' type='email'
-                                    value={form.email.value} />
-
-                                <h2>Senha</h2>
-                                <input type='password' placeholder='Senha' value={form.password.value}
-                                    onChange={event => setForm({
-                                        ...form, password: {
-                                            hasChanged: true, value: event.target.value
-                                        }
-                                    })}
-                                    data-testid="password" /><br></br>
-
-                                <ValidationError
-                                    hasChanged={form.password.hasChanged}
-                                    erroMessage='Senha é obrigatória'
-                                    testId='password-required' type='required'
-                                    value={form.password.value} />
-                            <div className="ouregister" />
-                            <div className="twoouregister" />
-                            <button type='button' data-testid="avanca-button" onClick={goToUserHome}> Avançar </button>
-                        </form>
-                    </div>
-                </section>
-            </body>
-        </main>
-    )
-}
-
-export default RegisterPage
->>>>>>> b0c5742170526ba3c10d4a28038f112838e1a13f
