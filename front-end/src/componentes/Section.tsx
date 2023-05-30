@@ -28,7 +28,7 @@ export interface Manga { //
   };
 }
 
-const MangaperPagina = 20;
+export const MangaperPagina = 20;
 
 function Section() {
   const navigate = useNavigate();

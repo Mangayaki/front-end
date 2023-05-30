@@ -12,7 +12,7 @@ const ViewG = () => {
   const location = useLocation();
   const [ViewG, SetViewG] = useState(null);
   const [favorito, setFavorito] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   //botao de favorito, mudar estrela para preenchida
   const handleClick = () => {
@@ -29,7 +29,7 @@ const ViewG = () => {
 
 
       const token = localStorage.getItem('token');
-      setIsLoggedIn(!!token);
+      //setIsLoggedIn(!!token);
     }
   }, [location.state]);
 
@@ -88,7 +88,7 @@ const ViewG = () => {
 
   return (
     <div>
-      <Padrao/>
+      <Padrao />
       <div className="mangaview">
         <div className="descrition">
           <h1>{canonicalTitle}</h1>
@@ -96,13 +96,13 @@ const ViewG = () => {
             <li>Data de Inicio: {startDate}</li>
             <li>Status: {status}</li>
             <li>
-              Gênero: 
+              Gênero:
               {ageRatingGuide
                 ? `${Age_rating[ageRatingGuide] || ageRatingGuide}`
                 : " Sem Classificação"}
             </li>
             <li>
-              Classicação Etária: 
+              Classicação Etária:
               {ageRating &&
                 `${Age_rating[ageRating] ||
                 ageRating
@@ -110,18 +110,18 @@ const ViewG = () => {
             </li>
           </ul>
           <img src={original} alt="capa do manga" />
-          {isLoggedIn && (
-  <button
-    className="favbutton"
-    id={``}
-    onClick={() => {
-      handleClick();
-      adicionarAosFavoritos();
-    }}
-  >
-    <img src={favorito ? starc : starv} alt="favorito" />
-  </button>
-)} 
+
+          <button
+            className="favbutton"
+            id={``}
+            onClick={() => {
+              handleClick();
+              adicionarAosFavoritos();
+            }}
+          >
+            <img src={favorito ? starc : starv} alt="favorito" />
+          </button>
+
           <p>
             { // Use a synopsis se a description estiver vazia
               description ? `${description}` : `${synopsis}`

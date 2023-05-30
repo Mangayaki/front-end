@@ -18,6 +18,8 @@ function LoginPage() {
         }
     });
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Variável para controlar o estado de login
+
     const navigate = useNavigate();
 
     const goToRegisterPage = () => {
@@ -36,7 +38,8 @@ function LoginPage() {
             if (response.status === 200) {
                 const token = response.data.token;
                 console.log('Login successful');
-                navigate('/userhome');
+                setIsLoggedIn(true); // Altera o estado para true após o login ser realizado
+                navigate('/userhome', { state: { isLoggedIn } }); // Passa o estado de login para a próxima página
             } else {
                 console.log('Login inválido');
             }
@@ -52,12 +55,11 @@ function LoginPage() {
 
     return (
         <main>
-                {/* Exibição do logotipo com evento onClick */}
-                <img src={logo} alt='logo' className='Logoin' onClick={goToHomePage}></img>
-                <section className='area-login'>
-                    <div className='login'>
-                        <form>
-                            <h2>Login</h2>
+            <img src={logo} alt='logo' className='Logoin' onClick={() => console.log(isLoggedIn)}></img>
+            <section className='area-login'>
+                <div className='login'>
+                    <form>
+                    <h2>Login</h2>
                             {/* Input para o email */}
                             <input type='email' placeholder='E-mail' value={form.email.value}
                                 onChange={event => setForm({
@@ -117,10 +119,10 @@ function LoginPage() {
                                 </button>
                             <button type='button' data-testid="register-button"
                                 onClick={goToRegisterPage}> Criar nova conta</button>
-                        </form>
-                    </div>
-                </section>
-        </main >
+                    </form>
+                </div>
+            </section>
+        </main>
     );
 }
 
